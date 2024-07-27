@@ -1,4 +1,4 @@
-# RestauranteGestor
+# Gestión de Restaurantes
 
 ## Descripción
 
@@ -16,10 +16,14 @@ RestauranteGestor es una aplicación diseñada para gestionar de manera eficient
 
 - **Backend:** Django (Python)
 - **Frontend:** JavaScript, HTML, CSS
-- **Base de Datos:** SQLite
+- **Base de Datos:** SQLite (incluido por defecto con Django)
 
 ## Requisitos
 
 - Python 3.x
 - Django
 - SQLite (incluido por defecto con Django)
+- Pip
+- Virtualenv
+
+![Progreso del proyecto](static/gestion_restaurante.PNG)
