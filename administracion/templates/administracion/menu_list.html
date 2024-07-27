@@ -1,18 +1,27 @@
+{% extends "administracion/base.html" %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Administración</title>
-</head>
-<body>
-    <h1>Bienvenido a la Administración del Restaurante</h1>
-    <ul>
-        <li><a href="{% url 'menu_list' %}">Gestión de Menús2</a></li>
-        <li><a href="{% url 'mesa_list' %}">Gestión de Mesas2</a></li>
-        <li><a href="{% url 'empleado_list' %}">Gestión de Empleados2</a></li>
-        <li><a href="{% url 'venta_list' %}">Ver Ventas2</a></li>
-    </ul>
-    <br>
-    <a href='{%url 'index'%}'>INICIO</a>
-</body>
-</html>
+{% block content %}
+<h1>Lista de Menús</h1>
+<a class="btn btn-primary mb-3" href="{% url 'menu_create' %}">Añadir Nuevo Menú</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for menu in menus %}
+        <tr>
+            <td>{{ menu.nombre }}</td>
+            <td>{{ menu.precio }}€</td>
+            <td>
+                <a class="btn btn-warning btn-sm" href="{% url 'menu_edit' menu.pk %}">Editar</a>
+                <a class="btn btn-danger btn-sm" href="{% url 'menu_confirm_delete' menu.pk %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

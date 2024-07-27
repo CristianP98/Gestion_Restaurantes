@@ -1,18 +1,27 @@
+{% extends "administracion/base.html" %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Administración</title>
-</head>
-<body>
-    <h1>Bienvenido a la Administración del Restaurante</h1>
-    <ul>
-        <li><a href="{% url 'menu_list' %}">Gestión de Menús2</a></li>
-        <li><a href="{% url 'mesa_list' %}">Gestión de Mesas2</a></li>
-        <li><a href="{% url 'empleado_list' %}">Gestión de Empleados2</a></li>
-        <li><a href="{% url 'venta_list' %}">Ver Ventas2</a></li>
-    </ul>
-    <br>
-    <a href='{%url 'index'%}'>INICIO</a>
-</body>
-</html>
+{% block content %}
+<h1>Lista de Mesas</h1>
+<a class="btn btn-primary mb-3" href="{% url 'mesa_create' %}">Añadir Nueva Mesa</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Número</th>
+            <th>Capacidad</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for mesa in mesas %}
+        <tr>
+            <td>{{ mesa.numero }}</td>
+            <td>{{ mesa.capacidad }}</td>
+            <td>
+                <a class="btn btn-warning btn-sm" href="{% url 'mesa_edit' mesa.pk %}">Editar</a>
+                <a class="btn btn-danger btn-sm" href="{% url 'mesa_delete' mesa.pk %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
