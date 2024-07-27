@@ -1,7 +1,19 @@
 from django import forms
 from .models import Menu, Mesa, Empleado, Venta
 
+# Define las categorías posibles en una lista
+CATEGORIA_CHOICES = [
+    ('Entrante', 'Entrante'),
+    ('Plato Principal', 'Plato Principal'),
+    ('Ensalada', 'Ensalada'),
+    ('Postre', 'Postre'),
+    ('Bebida', 'Bebida'),
+    # Se puede añadir mnas categorias si fuera necesario
+]
+
 class MenuForm(forms.ModelForm):
+    categoria = forms.ChoiceField(choices=CATEGORIA_CHOICES)
+
     class Meta:
         model = Menu
         fields = ['nombre', 'precio', 'descripcion', 'categoria', 'imagen']

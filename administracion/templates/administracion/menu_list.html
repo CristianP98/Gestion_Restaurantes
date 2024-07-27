@@ -8,6 +8,9 @@
         <tr>
             <th>Nombre</th>
             <th>Precio</th>
+            <th>Descripción</th>
+            <th>Categoría</th>
+            <th>Imagen</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -16,6 +19,17 @@
         <tr>
             <td>{{ menu.nombre }}</td>
             <td>{{ menu.precio }}€</td>
+            <td>{{ menu.descripcion }}</td>
+            <td>{{ menu.categoria }}</td>
+            <td>
+                {% if menu.imagen %}
+                <a href="{{ menu.imagen.url }}" data-lightbox="menu-images" data-title="{{ menu.nombre }} - {{ menu.descripcion }}" class="lightbox">
+                    <img src="{{ menu.imagen.url }}" alt="{{ menu.nombre }}" style="width: 100px; height: auto; cursor: pointer;">
+                </a>
+                {% else %}
+                No disponible
+                {% endif %}
+            </td>
             <td>
                 <a class="btn btn-warning btn-sm" href="{% url 'menu_edit' menu.pk %}">Editar</a>
                 <a class="btn btn-danger btn-sm" href="{% url 'menu_confirm_delete' menu.pk %}">Eliminar</a>
@@ -24,4 +38,7 @@
         {% endfor %}
     </tbody>
 </table>
+{% endblock %}
+
+{% block extra_js %}
 {% endblock %}
