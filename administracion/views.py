@@ -1,6 +1,24 @@
 from django.shortcuts import render, redirect
 from .models import Menu, Mesa, Empleado, Venta
 from .forms import MenuForm, MesaForm, EmpleadoForm
+from django.urls import reverse_lazy
+from django.views.generic import DeleteView
+
+
+class MenuDelete(DeleteView):
+    model = Menu
+    template_name = 'administracion/menu_confirm_delete.html'
+    success_url = reverse_lazy('menu_list')
+
+class MesaDelete(DeleteView):
+    model = Mesa
+    template_name = 'administracion/mesa_confirm_delete.html'
+    success_url = reverse_lazy('mesa_list')
+
+class EmpleadoDelete(DeleteView):
+    model = Empleado
+    template_name = 'administracion/empleado_confirm_delete.html'
+    success_url = reverse_lazy('empleado_list')
 
 def index(request):
     return render(request, 'administracion/index.html')
