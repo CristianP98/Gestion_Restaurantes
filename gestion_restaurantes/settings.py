@@ -32,7 +32,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms',  # Agregado para Django Crispy Forms
     'administracion',  #Mi aplicación personalizada
 ]
 
@@ -125,9 +124,6 @@ MEDIA_URL = '/media/'
 
 # MEDIA_ROOT: Directorio raíz para archivos multimedia
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# CRISPY_TEMPLATE_PACK: Configuración para Django Crispy Forms
-CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 # DEFAULT_AUTO_FIELD: Campo por defecto para auto incremento
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
