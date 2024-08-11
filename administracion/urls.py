@@ -7,6 +7,8 @@ urlpatterns = [
     path('menus/nuevo/', views.menu_create, name='menu_create'),
     path('menus/editar/<int:pk>/', views.menu_edit, name='menu_edit'),
     path('menus/eliminar/<int:pk>/', views.MenuDelete.as_view(), name='menu_confirm_delete'),
+    path('menus/cambiar-disponibilidad/<int:pk>/', views.cambiar_disponibilidad, name='cambiar_disponibilidad'),
+
 
     path('mesas/', views.mesa_list, name='mesa_list'),
     path('mesas/nueva/', views.mesa_create, name='mesa_create'),

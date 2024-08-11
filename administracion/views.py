@@ -36,7 +36,17 @@ class MenuDelete(DeleteView):
     template_name = 'administracion/menu_confirm_delete.html'
     success_url = reverse_lazy('menu_list')
 
-# Vistas para Mesa
+def cambiar_disponibilidad(request, pk):
+    menu = get_object_or_404(Menu, pk=pk)
+    if request.method == "POST":
+        disponible = request.POST.get('disponible') == 'True'
+        menu.disponible = disponible
+        menu.save()
+        return redirect('menu_list')
+    return render(request, 'administracion/cambiar_disponibilidad.html', {'menu': menu})
+
+
+# #######################  Vistas para Mesa  #################################
 def mesa_list(request):
     mesas = Mesa.objects.all()
     return render(request, 'administracion/mesa_list.html', {'mesas': mesas})
@@ -129,6 +139,6 @@ class VentaDelete(DeleteView):
     template_name = 'administracion/venta_confirm_delete.html'
     success_url = reverse_lazy('venta_list')
 
-# Vista principal
+# ################# Vista principal ################################
 def index(request):
     return render(request, 'administracion/index.html')

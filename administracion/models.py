@@ -6,6 +6,7 @@ class Menu(models.Model):
     descripcion = models.TextField()
     categoria = models.CharField(max_length=50)
     imagen = models.ImageField(upload_to='menu_images/', null=True, blank=True)
+    disponible = models.BooleanField(default=True)  # Nuevo campo
 
     def __str__(self):
         return self.nombre
